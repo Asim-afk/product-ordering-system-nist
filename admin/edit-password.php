@@ -31,13 +31,13 @@
                         <td class="text-right">
                             Old password
                         </td>
-                        <td><input type="password" name="old_password" placeholder="Enter your old password.." id="old-password" class="form-control"></td>
+                        <td><input type="password" name="old-password" placeholder="Enter your old password.." id="old-password" class="form-control"></td>
                     </tr>
                     <tr>
                         <td class="text-right">
                             New Password
                         </td>
-                        <td><input type="password" name="new_password" placeholder="Enter your new password.." id="new-password" class="form-control"></td>
+                        <td><input type="password" name="new-password" placeholder="Enter your new password.." id="new-password" class="form-control"></td>
                     </tr>
                     <tr>
                         <td class="text-right">
@@ -65,9 +65,9 @@
         if(isset($_POST['submit'])){
             
             //Getting the data from the web form in respective variable
-            $old_password = md5($_POST['old_password']);
-            $new_password = md5($_POST['new_password']);
-            $confirm_passwrod= md5($_POST['confirm_password']);
+            $old_password = md5($_POST['old-password']);
+            $new_password = md5($_POST['new-password']);
+            $confirm_passwrod= md5($_POST['confirm-password']);
             $id = $_POST['id'];
 
             //checking if user exists
@@ -77,7 +77,9 @@
             //if exection is successful
             if($exec==TRUE){
                 $count=mysqli_num_rows($exec);
+                
                 if($count==1){
+                
                     if($new_password==$confirm_passwrod){
                         $sql = "UPDATE users SET 
                         $password='$new_password',

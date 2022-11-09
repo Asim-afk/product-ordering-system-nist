@@ -121,3 +121,11 @@
   .error{
     color: red;
   }
+
+
+/*login page css*/
+  .login{
+    margin: 10% auto;
+    border: 1px solid red;
+    width: 10px;
+  }
