@@ -1,121 +1,130 @@
-<?php include('common/header.php') ?>
-    <!--form validation-->
- <?php 
-        $full_name = $user_name =$password="";
-        $full_nameError = $user_nameError=$passwordError="";
-    ?>
-
-    <?php 
-        if($_SERVER["REQUEST_METHOD"]=="POST")    {
-            if(empty($_POST['full_name'])){
-                $full_nameError="name is required";
-            }
-            else{
-                $full_name=checkInput($_POST['full_name']);
-                if(!preg_match("/^[a-zA-Z- ]*$/",$full_name)){
-                    $full_nameError="only letters and white spaces are allowed";
-                }
-            }
-
-            if(empty($_POST['user_name'])){
-                $user_nameError="user name is required";
-            }
-            else{
-                $user_name=checkInput($_POST['user_name']);
-                if(!preg_match("/^[a-zA-Z- ]*$/",$user_name)){
-                    $user_nameError="only letters and white spaces are allowed";
-                }
-            }
-
-            if(empty($_POST['password'])){
-                $passwordError="password is required";
-            }
-            else{
-                $password=checkInput($_POST['password']);
-                if(strlen($password)<8){
-                    $passwordError="Your password must be greater than 8 strings";
-                }
-            }
-        }
-
-        function checkInput($data){
-            //TRIM WHITE SPACES
-            $data=trim($data);
-            //CUT IF ANY SLASHES
-            $data=stripslashes($data);
-            //ENCODES HTML INTO ENCODED HTML FORM
-            $data=htmlspecialchars($data);
-            return($data);
-        }
-    ?>  
-     <!-- Body Section Starts -->
-     <section class="content">
-        <div class="wrapper">
-            <strong class="heading">ADD USER</strong>
-            <br><br>
-            <?php include('../config/session.php') ?>
-            <!-- Users Add form-->
-            <form method="post" action="add-user.php">
-                <table class="table">
-                    <tr>
-                        <td>UserName
-                        <input type="text" placeholder="Enter a unique username" name="user_name" value="<?php echo $user_name; ?>" class="form-control">
-                        <br><span class="error">* <?php echo $user_nameError; ?> </span></td>
-                    </tr>
-                    <tr>
-                        <td>Full name
-                        <input type="text" placeholder="Enter your name" name="full_name" value="<?php echo $full_name; ?>"class="form-control">
-                        <br><span class="error">* <?php echo $full_nameError; ?> </span></td>
-                    </tr>
-                    <tr>
-                        <td>Password
-                        <input type="password" placeholder="*******" name="password" value="<?php echo $password; ?>"class="form-control">
-                        <br><span class="error">* <?php echo $passwordError; ?> </span></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="text-center">
-                        <input type="submit" value="submit" class="btn btn-primary"></td>
-                    </tr>
-                </table>
-            </form>
-            <!-- Users Table End -->
-        </div>
-</section>
-    <!-- Body Section Ends -->
-
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .wrapper{
+    width: 80%;
+    margin: 0 auto;
+    padding: 1%;
+  }
+  .text-center{
+    text-align: center;
+  }
+  .logo{
+    width: 15%;
+    float: left;
+  }
+  .img-responsive{
+    width: 100%;
+  }
+  .menu-bar{
+    border-bottom: 2px solid gray;
+  }
+  .clearfix{
+    clear: both;
+    float: none;
+  }
+  .menu{
+    line-height: 100px;
+  }
+  .menu ul{
+    list-style-type: none;
+  }
+  .menu ul li{
+    display: inline;
+    padding: 1%;
+  }
+  a{
+    text-decoration: none;
+    color: rgb(170, 96, 61);
+    font-weight: bold;
+  }
+  a:hover{
+    color: rgb(241, 56, 10);
+  
+  }
+  /* footer css */
+  .footer{
+    background-color: rgb(170,96,61);
+    color: white;
+    padding: 1%;
+  }
+  .footer-link{
+    color: aquamarine;
+  }
+  .footer-link:hover{
+    color: aqua;
+  }
+  /* contant css */
+  .content{
+    background-color: rgba(48, 45, 45, 0.363);
+    padding: 1% 0;
+  }
+  .col-4{
+    background-color: white;
+    width: 15%;
+    margin: 1%;
+    padding: 3%;
+    float: left;
+  }
+  .heading{
+    color: rgb(167, 4, 4);
+    font-weight: 900;
+  }
+  .table{
+    width: 100%;
+  }
+  table tr th{
+    text-align: left;
+  }
+  table tr td{
+    padding: 1%;
+  }
+  .btn{
+    padding: 1%;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+  }
+  .btn-primary{
+    background-color:#007224 ;
+  }
+  .btn-primary:hover{
+    background-color: rgb(0, 255, 55);
+  }
+  .btn-secondary{
+    background-color: #70a1ff;
+  }
+  .btn-secondary:hover{
+    background-color: red;
+  }
+  .btn-danger{
+    background-color:darkred ;
+  }
+  .btn-danger:hover{
+    background-color: red;
+  }
  
+  .form-control{
+    width: 80%;
+    padding: 1%;
+    border-radius: 5px;
+    border: 1px solid #ced6e0;
+  }
 
-<?php include('common/footer.php') ?>
-
-
-<?php
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(isset($_POST['submit'])){
-            echo"clicked";
-            $full_name = $_POST['full_name'];
-            $user_name = $_POST['user_name'];
-            $password = md5($_POST['password']);
-            
-            $sql = "INSERT INTO users SET 
-            full_name='$full_name',
-            user_name='$user_name',
-             password='$password'
-        ";
-
-        if($conn){
-            $execute = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                if($execute = TRUE){
-                    $_SESSION['message'] = "User Added Successfully";
-                    header('location:'.APP_URL.'admin/manage-user.php');
-                }else{
-                    $_SESSION['message'] = "Could not Add User Instantly. Try Again";
-                    header('location:'.APP_URL.'admin/add-user.php');
-                }
-
-        }
-        else{
-            die("Connection Failed!".mysqli_connect_error());
-        }
-    }
-}
-?>
+  .success{
+    color: green;
+    background-color: azure;
+  }
+  .error{
+    color: red;
+  }
+  
+  .form-control-login{
+    width: 50%;
+    padding: 1%;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }

@@ -77,48 +77,33 @@
             //if exection is successful
             if($exec==TRUE){
                 $count=mysqli_num_rows($exec);
-                
                 if($count==1){
-                
                     if($new_password==$confirm_passwrod){
-                        $sql = "UPDATE users SET 
-                        $password='$new_password',
-                        WHERE id='$id' AND password='$old_password'";
-
+                        $sql = "UPDATE users SET  
+                                password='$new_password',
+                                WHERE id=$id AND password='$old_password'";
+                        
                         //execute the query
                         $execute = mysqli_query($conn, $sql);
-
                         if($execute == TRUE){
                             $_SESSION['message']='<div class="successs">password changed successfully</div>';
+                            header('location:'.APP_URL.'admin/manage-user.php');
                         }
                         else{
                             $_SESSION['message'] = '<div class="error">Please try again</div>';
                         }
                     }
                     else{
-                        $_SESSION['message'] = '<div class="error"> Please confirm your password</div>';
+                        $_SESSION['message'] = '<div class="error"> Passwords do not match</div>';
                     }
-                }
-            }else{
-                $_SESSION['message'] = '<div class="error"> Could not find the user</div>';
-            }
-        
-        //Check the connection 
-        if($conn){
-            $execute = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-            //create database
-                if($execute = TRUE){
-                    $_SESSION['message'] = "<div class='success'>User updated Successfully</div>";
-                    header('location:'.APP_URL.'admin/manage-user.php');
                 }else{
-                    $_SESSION['message'] = '<div class="error">Could not Edit User Instantly. Try Again</div>';
-                    header('location:'.APP_URL.'admin/edit-password.php');
+                    $_SESSION['message'] = '<div class="error"> Could not find the user</div>';
                 }
+            }
+            else{
+                $_SESSION['message'] = '<div class="error"> Could not execute the query</div>';
+            }
+        }
+        }
 
-        }else{
-            die("Connection Failed!".mysqli_connect_error());
-        }
-        
-        }
-    }
 ?>

@@ -4,6 +4,7 @@
      <section class="content">
         <div class="wrapper">
             <strong class="heading">DASHBOARD</strong>
+            <br><?php include('../config/session.php') ?>
 
             <div class="clearfix"></div>
            
