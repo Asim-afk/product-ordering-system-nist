@@ -1,0 +1,257 @@
+.container {
+  width: 80%;
+  margin: 0% auto;
+  padding: 1%;
+}
+fieldset{
+  border-color: aqua;
+  padding: 2%;
+}
+
+* {
+  margin: 0 0;
+  padding: 0 0;
+  font-family: garamond;
+}
+h2 {
+  color: #57606f;
+  padding: 1%;
+  margin: 2px;
+}
+.image-responsive {
+  width: 100%;
+
+}
+.img-rounded {
+  border-radius: 2px;
+}
+.navbar .container {
+  padding: 0%;
+}
+.navbar ul li a:hover {
+  background-color: #e74c3c;
+  color: azure;
+}
+
+.logo {
+  width: 5%;
+  float: left;
+}
+.menu ul {
+  list-style-type: none;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+ul {
+  list-style-type: none;
+}
+.menu ul li {
+  display: inline;
+  padding: 2%;
+  font-weight: bold;
+  font-size: xx-large;
+}
+a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #c0392b;
+}
+.social ul li {
+  display: inline;
+  padding: 2%;
+}
+.menu {
+  line-height: 85px;
+}
+
+.search {
+  text-align: center;
+  background-image: url(../images/new.jpg);
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding: 7% 0%;
+}
+.search input[type="search"] {
+  width: 50%;
+  border: none;
+  font-size: 2rem;
+  border-radius: 5px;
+  padding: 0.2rem 0.3rem;
+}
+.btn {
+  background-color:#c0392b;
+  border: none;
+  color: white;
+  padding: 14px 24px 8px 12px;
+  text-align: center;
+  font-size: 1rem;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn:hover {
+  opacity: 1;
+}
+
+.clear-fix {
+  clear: both;
+  float: none;
+}
+.categories{
+    padding:4% 0;
+}
+.card{
+  width: 25%;
+  margin: 0% 4%;
+  transition: 0.5s;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+.card:hover, .card:focus, .card:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+.float-container {
+  position: relative;
+}
+.float-text {
+  position: absolute;
+  left: 20%;
+  bottom: 0px;
+}
+h4 {
+  color: rebeccapurple;
+  font-size: 2rem;
+
+}
+.food-menu{
+    padding: 4% 0;
+    background-color: whitesmoke;
+}
+.box{
+
+    width: 43%;
+    float: left;
+    margin: 1%;
+    padding: 2%;
+    background-color: #ecf0f1;
+    border-radius: 7px;
+    box-shadow: 5px 10px #cfd3dc;
+    transition: 0.5s;
+}
+.box-img{
+    width: 20%;
+    float: left;
+}
+.box-desc{
+    width: 70%;
+    float:  left;
+    margin: 2%;
+}
+.box:hover{
+  transform: scale(1.05);
+}
+.item-price{
+  font-size: 1.3rem;
+  padding: 1% auto;
+}
+.explore .container button{
+  float: left;
+}
+.item-disc{
+  font-size: grey;
+  padding-bottom: 1%;
+}
+.social ul a :hover {
+  transition: 0.3s;
+  background-color: none;
+  transform: scale(1.2);
+}
+.contact h2{
+  padding:3%;
+}
+.form-horizontal{
+  width: 60%;
+  margin: 4% auto;
+  padding: 4%;
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+.form-horizontal label{
+  width: 100%;
+  padding: 10% 0;
+  margin: 14% 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.form-control{
+  border: none;
+  width: 98%;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 1% auto;
+}
+.form-horizontal button{
+  width: 50%;
+  margin-left: 26%;
+  margin-top: 2%;
+}
+fieldset .btn{
+  float: left;
+}
+
+/* for resonsive*/
+@media screen and (max-width: 728px) {
+    .logo{
+      width: 80%;
+      float: none;
+    }
+    .menu{
+      float: none;
+      text-align: center;
+      font-weight: 50px; 
+    }
+    .search{
+      padding: 10% 0;
+    }
+    
+    .search input[type="search"]{
+      width: 100%;
+      font-size: 1.9rem;
+      padding: 2%;
+      text-align: center;
+    }
+    .btn{
+      width: 100%;
+    }
+
+    .categories{
+      padding: 10% 0;
+    }
+    .card{
+      width: 80%;
+      margin: 0 8%;
+      padding: 5px;
+    }
+    .float-text{
+      bottom: 2%
+    }
+    .box{
+      width: 90%;
+    }
+  }
