@@ -28,7 +28,7 @@ include('../config/login-check.php');
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="manage-user.php">User</a></li>
                     <li><a href="manage-category.php">Category</a></li>
-                    <li><a href="manage-product.php">Product</a></li>
+                    <li><a href="manage-products.php">Product</a></li>
                     <li><a href="manage-order.php">Order</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
